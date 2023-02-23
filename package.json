@@ -8,6 +8,7 @@
     "start": "node src/index.js",
     "devstart": "nodemon src/index.js",
     "dashdevstart": "nodemon src/dashboard.js",
+    "dashstart": "node src/dashboard.js",
     "deploycommands": "node src/deploycommands.js"
   },
   "author": "",
