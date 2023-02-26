@@ -4,6 +4,7 @@ const path = require("node:path");
 require("dotenv").config();
 const fs = require("node:fs");
 const { MongoClient, ServerApiVersion } = require("mongodb");
+const db = require("database.js");
 
 // Create Bot
 const client = new Client({intents:[

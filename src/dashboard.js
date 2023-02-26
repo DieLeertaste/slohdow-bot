@@ -8,6 +8,7 @@ const app = express()
 app.enable('trust proxy')
 app.set('etag', false)
 app.use(express.static(__dirname + '/dashboard'))
+app
 
 // Handler
 app.get('/', async (req, res) => {
