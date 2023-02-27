@@ -4,11 +4,17 @@ const path = require("node:path");
 require("dotenv").config();
 const fs = require("node:fs");
 const { MongoClient, ServerApiVersion } = require("mongodb");
-const db = require("database.js");
+const db = require("./database.js");
+
+// Functions for later
+function db_registered (message){
+    db.execute(`SELECT id FROM user WHERE id=${message.author.id}`)
+}
 
 // Create Bot
 const client = new Client({intents:[
     GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
 ]})
 
 // Events //
@@ -34,6 +40,11 @@ client.on(Events.InteractionCreate, async interaction => {
 		console.error(error);
 		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 	}
+})
+
+// MessageCreate Event
+client.on(Events.MessageCreate, async (message) => {
+    if(message.author.bot) return
 })
 
 // Command Handler

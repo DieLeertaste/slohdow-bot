@@ -9,7 +9,7 @@ const {
 // Creating Slash Command
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("Kick")
+    .setName("kick")
     .setDescription("kick an User")
     .addUserOption((option) =>
       option

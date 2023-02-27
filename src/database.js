@@ -5,7 +5,7 @@ const pool = mysqpl.createPool({
   host: "localhost",
   user: "root",
   password: "n7GSycc@$sWnT1F6LmDj",
-  database: "node-test",
+  database: "slohdow-bot",
 }); 
 
 module.exports = pool.promise()

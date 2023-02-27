@@ -1,3 +1,11 @@
 const db = require('../../../database.js');
 
-db.execute('INSERT INTO user VALUE (1, "lol", "lel")');
+function db_registered (){
+    //const [rows, fields] = db.execute('SELECT * FROM user WHERE id=1')
+    //console.log(rows)
+    db.execute('SELECT * FROM user WHERE id=1').then(result => {
+        console.log(result[])
+    })
+}
+
+db_registered()
