@@ -4,7 +4,7 @@ const path = require("node:path");
 require("dotenv").config();
 const fs = require("node:fs");
 const { MongoClient, ServerApiVersion } = require("mongodb");
-const db = require("./database.js");
+const { sequelize, User, newuser, IsRegistered } = require("./database.js");
 
 // Create Bot
 const client = new Client({intents:[
@@ -39,7 +39,13 @@ client.on(Events.InteractionCreate, async interaction => {
 
 // MessageCreate Event
 client.on(Events.MessageCreate, async (message) => {
-    if(message.author.bot) return
+    const member = message.author
+    if(member.bot) return
+    if(await IsRegistered(member)) {
+
+    } else if (!await IsRegistered(member)) {
+
+    }
 })
 
 // Command Handler

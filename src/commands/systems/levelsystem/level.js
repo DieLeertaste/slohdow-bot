@@ -1,5 +1,3 @@
-const { sequelize, User } = require('../../../database.js');
+const { sequelize, newuser } = require('../../../database.js')
 
-(async () => {
-    await sequelize.sync()
-})()
+newuser(1, 'test', 1, 1)
