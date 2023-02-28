@@ -6,11 +6,6 @@ const fs = require("node:fs");
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const db = require("./database.js");
 
-// Functions for later
-function db_registered (message){
-    db.execute(`SELECT id FROM user WHERE id=${message.author.id}`)
-}
-
 // Create Bot
 const client = new Client({intents:[
     GatewayIntentBits.Guilds,

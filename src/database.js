@@ -1,12 +1,20 @@
-const mysqpl = require('mysql2')
+// Imports
+const { Model, Sequelize, DataTypes } = require('sequelize');
 
-const database_password = process.env.database_password
-const pool = mysqpl.createPool({
-  host: "localhost",
-  user: "root",
-  password: "n7GSycc@$sWnT1F6LmDj",
-  database: "slohdow-bot",
-}); 
+const sequelize = new Sequelize("node-test", "root", "n7GSycc@$sWnT1F6LmDj", {
+  dialect: 'mysql',
+  host: 'localhost'
+});
 
-module.exports = pool.promise()
-db = pool.promise()
+class User extends Model {}
+User.init({
+  id: DataTypes.INTEGER,
+  username: DataTypes.STRING,
+  level: DataTypes.INTEGER,
+  xp: DataTypes.INTEGER
+}, {sequelize, modelName: 'user'})
+
+
+
+module.exports = sequelize, User
+
