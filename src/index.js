@@ -60,15 +60,3 @@ for (const file of commandFiles) {
 
 // Start Bot
 client.login(process.env.test_token);
-
-
-
-
-
-
-
-
-
-
-
-
