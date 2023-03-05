@@ -1,6 +1,7 @@
 // Imports
 const express = require('express')
 const fs = require('fs')
+const db = require("./models");
 
 // Dashboard erstellen
 const app = express()
@@ -21,5 +22,7 @@ app.get('/wip', async (req, res) => {
 })
 
 // Dashboard starten
-app.listen(80)
-Console.log(`Dashboard is Online and listens on Port: ${process.env.port}`)
+db.sequelize.sync().then((req) => {
+  app.listen(80)
+  Console.log(`Dashboard is Online and listens on Port: ${process.env.port}`)
+})

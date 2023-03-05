@@ -3,8 +3,7 @@ const { Client, GatewayIntentBits, Events, Collection } = require('discord.js')
 const path = require("node:path");
 require("dotenv").config();
 const fs = require("node:fs");
-const { MongoClient, ServerApiVersion } = require("mongodb");
-const { sequelize, User, newuser, IsRegistered } = require("./database.js");
+const db = require('./models')
 
 // Create Bot
 const client = new Client({intents:[
@@ -41,11 +40,6 @@ client.on(Events.InteractionCreate, async interaction => {
 client.on(Events.MessageCreate, async (message) => {
     const member = message.author
     if(member.bot) return
-    if(await IsRegistered(member)) {
-
-    } else if (!await IsRegistered(member)) {
-
-    }
 })
 
 // Command Handler
@@ -66,7 +60,11 @@ for (const file of commandFiles) {
 }
 
 // Start Bot
-client.login(process.env.test_token);
+db.sequelize.sync().then((req) => {
+    client.login(process.env.test_token);
+})
+
+
 
 
 
