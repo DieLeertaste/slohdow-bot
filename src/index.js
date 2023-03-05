@@ -3,7 +3,6 @@ const { Client, GatewayIntentBits, Events, Collection } = require('discord.js')
 const path = require("node:path");
 require("dotenv").config();
 const fs = require("node:fs");
-const db = require('./models')
 
 // Create Bot
 const client = new Client({intents:[
@@ -60,9 +59,8 @@ for (const file of commandFiles) {
 }
 
 // Start Bot
-db.sequelize.sync().then((req) => {
-    client.login(process.env.test_token);
-})
+client.login(process.env.test_token);
+
 
 
 

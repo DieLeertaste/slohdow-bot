@@ -1,7 +1,6 @@
 // Imports
 const express = require('express')
 const fs = require('fs')
-const db = require("./models");
 
 // Dashboard erstellen
 const app = express()
@@ -9,12 +8,11 @@ const app = express()
 app.enable('trust proxy')
 app.set('etag', false)
 app.use(express.static(__dirname + '/dashboard'))
-app
 
 // Handler
 app.get('/', async (req, res) => {
   res.redirect('wip')
-  Console.log(`New Request ${req.method}, ${req.url}`)
+  console.log(`New Request ${req.method}, ${req.ip}`)
 })
 
 app.get('/wip', async (req, res) => {
@@ -22,7 +20,11 @@ app.get('/wip', async (req, res) => {
 })
 
 // Dashboard starten
-db.sequelize.sync().then((req) => {
-  app.listen(80)
-  Console.log(`Dashboard is Online and listens on Port: ${process.env.port}`)
-})
+try {
+  var port = 80
+  app.listen(port)
+  console.log(`Dashboard is Online and listens on Port: ${port}`)
+} catch (error) {
+  console.log('Something went wrong. Error:')
+  console.log(error)
+}
