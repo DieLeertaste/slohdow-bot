@@ -11,8 +11,9 @@ app.use(express.static(__dirname + '/dashboard'))
 
 // Handler
 app.get('/', async (req, res) => {
-  res.redirect('wip')
-  console.log(`New Request ${req.method}, ${req.ip}`)
+  res.sendFile('./dashboard/html/home.html', {root: __dirname})
+  //res.redirect('wip')
+  //console.log(`New Request ${req.method}, ${req.ip}`)
 })
 
 app.get('/wip', async (req, res) => {
