@@ -4,14 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js",
-    "devstart": "nodemon src/index.js",
-    "dashdevstart": "nodemon src/dashboard.js",
-    "dashstart": "node src/dashboard.js",
-    "deploycommands": "node src/deploycommands.js",
-    "dbstart": "node src/database.js",
-    "devdbstart": "nodemon src/database.js"
+    "start-bot": "node src/index.js",
+    "start-bot-dev": "nodemon src/index.js",
+    "deploy": "node src/deploycommands.js",
+    "deploy-global": "node src/deployglobalcommands.js",
+    "start-dash": "node src/dashboard.js",
+    "start-dash-dev": "nodemon src/dashboard.js"
   },
   "author": "",
   "license": "ISC",

@@ -2,8 +2,7 @@
 const { EmbedBuilder } = require("@discordjs/builders");
 const {
   SlashCommandBuilder,
-  PermissionFlagsBits,
-  Embed,
+  PermissionFlagsBits
 } = require("discord.js");
 
 // Creating Slash Command

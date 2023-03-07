@@ -18,9 +18,17 @@ commandfiles.forEach((commandfile) => {
 
 const restClient = new REST({ version: "9" }).setToken(process.env.test_token);
 
-restClient
-  .put(
-    Routes.applicationGuildCommands(process.env.test_application_id, process.env.test_guild), { body: commands }
-  )
-  .then(() => console.log("Succesfully registered Commands"))
-  .catch(console.error);
+try {
+  restClient.put(
+    Routes.applicationGuildCommands(
+      process.env.test_application_id,
+      process.env.test_guild
+    ),
+    {
+      body: commands,
+    }
+  );
+  console.log("Succesfully registered Commands");
+} catch (error) {
+  console.log(error);
+}

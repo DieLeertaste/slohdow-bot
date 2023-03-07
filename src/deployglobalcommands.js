@@ -16,11 +16,11 @@ commandfiles.forEach((commandfile) => {
   commands.push(command.data.toJSON());
 });
 
-const restClient = new REST({ version: "9" }).setToken(process.env.test_token);
+const restClient = new REST({ version: "9" }).setToken(process.env.token);
 
-restClient
-  .put(
-    Routes.applicationCommands(process.env.test_application_id), { body: commands }
-  )
-  .then(() => console.log("Succesfully registered Commands"))
-  .catch(console.error);
+try {
+  restClient.put(Routes.applicationCommands(process.env.application_id), {body: commands});
+  console.log("Succesfully registered Commands");
+} catch (error) {
+  console.log(error)
+}
