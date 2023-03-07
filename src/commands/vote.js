@@ -21,6 +21,5 @@ module.exports = {
                     value: "Coming Soon"
                 }
             )
-        
-        await interaction.reply(embed);
+        await interaction.reply({embeds: [embed]});
 }}

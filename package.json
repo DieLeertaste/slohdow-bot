@@ -14,16 +14,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "discord-xp": "^1.1.16",
     "discord.js": "^14.7.1",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
     "mysql2": "^3.2.0",
-    "nodemon": "^2.0.21",
-    "path": "^0.12.7",
-    "react-spring": "^9.7.1",
-    "sequelize": "^6.29.0",
-    "sequelize-cli": "^6.6.0"
+    "nodemon": "^2.0.21"
   }
 }

@@ -55,9 +55,9 @@ module.exports = {
 
     if (member.kickable) {
       await interaction.guild.members.kick(member);
-      await interaction.reply(succes_embed);
+      await interaction.reply({ embeds: [succes_embed] });
     } else {
-      await interaction.reply(failed_embed);
+      await interaction.reply({ embeds: [failed_embed] });
     }
   },
 };
