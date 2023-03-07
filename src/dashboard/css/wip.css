@@ -31,3 +31,10 @@ body {
     font-size: medium;
     color: gray;
 }
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    size: 0cm;
+}
