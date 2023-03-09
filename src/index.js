@@ -10,36 +10,19 @@ const client = new Client({intents:[
     GatewayIntentBits.GuildMessages,
 ]})
 
-// Events //
-// Startup event
-client.once(Events.ClientReady, c => {
-    console.log(`Logged in as ${c.user.tag}`)
-})
+// Event Handler //
+const eventsPath = path.join(__dirname, 'events')
+const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'))
 
-// Interaction Create Event
-client.on(Events.InteractionCreate, async interaction => {
-    if(!interaction.isChatInputCommand()) return
-    
-    const command = interaction.client.commands.get(interaction.commandName);
-
-	if (!command) {
-		console.error(`No command matching ${interaction.commandName} was found.`);
-		return;
-	}
-
-	try {
-		await command.execute(interaction);
-	} catch (error) {
-		console.error(error);
-		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
-	}
-})
-
-// MessageCreate Event
-client.on(Events.MessageCreate, async (message) => {
-    const member = message.author
-    if(member.bot) return
-})
+for (const file of eventFiles) {
+  const filePath = path.join(eventsPath, file);
+  const event = require(filePath);
+  if (event.once) {
+    client.once(event.name, (...args) => event.execute(...args));
+  } else {
+    client.on(event.name, (...args) => event.execute(...args));
+  }
+}
 
 // Command Handler
 client.commands = new Collection()
@@ -59,4 +42,4 @@ for (const file of commandFiles) {
 }
 
 // Start Bot
-client.login(process.env.token);
+client.login(process.env.test_token);

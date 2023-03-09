@@ -21,7 +21,7 @@ module.exports = {
         .setName("reason")
         .setDescription("The Reason you want to kick the Member")
     )
-    .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
+    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
   // Command Code
   async execute(interaction) {
     const member = interaction.option.getUser("Member");
