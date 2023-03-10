@@ -1,15 +1,30 @@
-const { MongoClient, ServerApiVersion } = require("mongodb");
-const uri =
-  "mongodb+srv://root:eiqWoqvDvHZ9dpmW@slohdow.ym89jr7.mongodb.net/?retryWrites=true&w=majority";
+// Imports
+const mongoose = require('mongoose')
+const User = require('./models/User.js')
 
-  const client = new MongoClient(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  serverApi: ServerApiVersion.v1,
-});
+// Connect to MongoDB
+const uri ="mongodb+srv://root:r0jpkmcZLy0zqr5o@slohdow.ym89jr7.mongodb.net/?retryWrites=true&w=majority";
 
-client.connect((err) => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
+mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true})
+  .then(() => console.log('Connected to MongoDB'))
+  .catch((err) => console.log(err))
+
+async function newUser(discord_id, username, level, xp) {
+    const user = new User({
+        discord_id: discord_id,
+        username: username,
+        level: level,
+        xp: xp
+    })
+
+    user.save().catch((err) => {return err})
+}
+
+async function IsRegistered(discord_id) {
+
+}
+
+module.exports = {
+    newUser: newUser,
+    IsRegistered: IsRegistered
+}

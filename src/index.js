@@ -3,6 +3,7 @@ const { Client, GatewayIntentBits, Events, Collection } = require('discord.js')
 const path = require("node:path");
 require("dotenv").config();
 const fs = require("node:fs");
+const { newUser } = require('./database.js')
 
 // Create Bot
 const client = new Client({intents:[
@@ -43,3 +44,5 @@ for (const file of commandFiles) {
 
   // Start Bot
 client.login(process.env.test_token);
+
+newUser(1, 'lol', 0, 0)
