@@ -1,11 +1,8 @@
-// Imports
-const User = require('../../models/User.js')
+const { newUser, IsRegistered } = require("../../database.js");
 
-const user = new User({
-    discord_id: 1234,
-    username: 'test',
-    level: 0,
-    xp: 0
-})
-
-user.save().then(() => console.log('Registered User')).catch((err) => console.log(err))
+//newUser(2, "lol", 0, 0);
+if (IsRegistered(2) == true) {
+    console.log('Jo');
+} else {
+    console.log('Ne')
+}

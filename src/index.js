@@ -3,7 +3,11 @@ const { Client, GatewayIntentBits, Events, Collection } = require('discord.js')
 const path = require("node:path");
 require("dotenv").config();
 const fs = require("node:fs");
-const { newUser } = require('./database.js')
+const { newUser, IsRegistered, dbconnect } = require('./database.js');
+const User = require('./models/User.js');
+
+// Db Connection
+dbconnect();
 
 // Create Bot
 const client = new Client({intents:[
@@ -11,19 +15,39 @@ const client = new Client({intents:[
     GatewayIntentBits.GuildMessages,
 ]})
 
-// Event Handler //
-const eventsPath = path.join(__dirname, 'events')
-const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'))
+// Events //
+// Client Ready Event //
+client.once(Events.ClientReady, c => {
+    console.log(`Ready! Logged in as ${c.user.tag}`)
+})
 
-for (const file of eventFiles) {
-  const filePath = path.join(eventsPath, file);
-  const event = require(filePath);
-  if (event.once) {
-    client.once(event.name, (...args) => event.execute(...args));
-  } else {
-    client.on(event.name, (...args) => event.execute(...args));
-  }
-}
+// Message Create Event //
+client.on(Events.MessageCreate, message => {
+    const member = message.author
+    const username = message.member.nickname || message.author.username;
+
+    async function checkIsRegistered() {
+      const isNew = await IsRegistered(member.id);
+      if (isNew) {
+        newUser(member.id, username, 0, 0)
+        console.log('New User registered');
+      } else {
+        const level = [5, 10, 50, 100, 500, 1000]
+        
+        function getRandomInt(max) {
+          return Math.floor(Math.random() * max);
+        }
+        const user = await User.findOne({ discord_id: member.id });
+        const xp = getRandomInt(5)
+        const old_xp = user['xp']
+        const new_xp = old_xp + xp;
+        var new_lvl = 0
+
+        await User.findOneAndUpdate({discord_id: member.id}, {xp: new_xp })
+      }
+    }
+    checkIsRegistered();
+})
 
 // Command Handler
 client.commands = new Collection()
@@ -44,5 +68,3 @@ for (const file of commandFiles) {
 
   // Start Bot
 client.login(process.env.test_token);
-
-newUser(1, 'lol', 0, 0)
