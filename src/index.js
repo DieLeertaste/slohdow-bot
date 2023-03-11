@@ -24,7 +24,7 @@ client.once(Events.ClientReady, c => {
 // Message Create Event //
 client.on(Events.MessageCreate, message => {
     const member = message.author
-    const username = message.member.nickname || message.author.username;
+    const username = message.author.username;
 
     async function checkIsRegistered() {
       const isNew = await IsRegistered(member.id);
