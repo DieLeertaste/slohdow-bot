@@ -33,7 +33,7 @@ client.on(Events.MessageCreate, message => {
         console.log('New User registered');
       } else {
         const level = [5, 10, 50, 100, 500, 1000]
-        
+        //lol
         function getRandomInt(max) {
           return Math.floor(Math.random() * max);
         }
