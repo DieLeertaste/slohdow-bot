@@ -1,0 +1,83 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    background-color: rgb(31, 36, 40);
+    color: rgb(255, 255, 255);
+    font-family: Montserrat, sans-serif;
+    overflow-x: hidden;
+}
+
+.header {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(36, 41, 46);
+    border-radius: 15px;
+  }
+
+.headerlinks {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.headerlinks a {
+    text-decoration: none;
+    padding: 50px;
+    margin-right: 100px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+#logo-center {
+    margin-top: 20px;
+    margin-left: 34%;
+}
+
+.welcome {
+    background-color: rgb(36, 41, 46);
+    border-radius: 15px;
+    text-align: center;
+    margin-left: 25%;
+    margin: 0 auto;
+    width: 50%;
+    margin-top: 10%;
+}
+
+.welcome p {
+    padding: 20px;
+    font-size: x-large;
+}
+
+.tool-title {
+    background-color: rgb(36, 41, 46);
+    border-radius: 15px;
+    text-align: center;
+    margin-left: 25%;
+    margin: 0 auto;
+    width: 15%;
+    margin-top: 25%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.moderation img {
+    display: block;
+    margin: auto;
+    margin-top: 5%;
+}
+
+.levelsystem img {
+    display: block;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}

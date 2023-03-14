@@ -8,8 +8,8 @@
     "start-bot-dev": "nodemon src/index.js",
     "deploy": "node src/deploycommands.js",
     "deploy-global": "node src/deployglobalcommands.js",
-    "start-dash": "node src/dashboard.js",
-    "start-dash-dev": "nodemon src/dashboard.js"
+    "start-dash": "node src/dashboard/index.js",
+    "start-dash-dev": "nodemon src/dashboard/index.js"
   },
   "author": "",
   "license": "ISC",
